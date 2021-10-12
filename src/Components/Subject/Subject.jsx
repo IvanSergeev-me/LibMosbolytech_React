@@ -2,15 +2,21 @@ import React from "react";
 import { connect} from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router";
+import {setSubjectThunk} from "../../Redux/subject-reducer.js";
 
 class Subject extends React.Component{
     
     constructor(props){
         super(props)
     }
+    componentDidMount =()=>{
+        this.props.setSubjectThunk(this.props.match.params.id);
+    }
     render = () =>{
         let subjId = this.props.match.params.id;
-        let subjectInfo = this.props.subject.subjects[subjId];
+        
+        let subjectInfo = this.props.subject;
+        console.log(subjectInfo)
         let subjectLinks = null;
         let subjectPrepods = null;
         if(subjectInfo!=undefined || subjectInfo!= null){
@@ -49,8 +55,8 @@ class Subject extends React.Component{
     
 }
 let mapStateToProps = (state) =>({
-    subject: state.subjectReducer
+    subject: state.subjectReducer.subject
 })
-export default compose(connect(mapStateToProps, {})
+export default compose(connect(mapStateToProps, {setSubjectThunk})
 ,withRouter,
 )(Subject);

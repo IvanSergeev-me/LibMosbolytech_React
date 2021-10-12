@@ -1,49 +1,45 @@
+import {SubjectsAPI} from '../API/API.js';
 
+const SET_SUBJECT = "SET_SUBJECT";
 let initialState = {
-    subjects:[
+    subject:
         {
-            id:0,
-            title:"Математическая логика и теория алгоритмов в практике программирования",
+            title:"Загрузка",
             links:[
                {
-                  name:"ДЗ",
-                  url:"https://lib.mospolytech.com/docs/nabebin/Nabebin_VOPROSY_po_MLTA_37.pdf"
+                  name:"Загрузка",
+                  url:"Загрузка"
                },
-               {
-                  name:"Остальные материалы",
-                  url:"https://lib.mospolytech.com/docs/nabebin"
-               }
-               ,
-               {
-                  name:"Зум",
-                  url:"https://us06web.zoom.us/j/6423304512?pwd=STdqekhJVVVkNGlMM2RJdlNQc2FXdz09&cc_key=#success"
-               }
-               ,
-               {
-                  name:"Таблица успеваемости",
-                  url:"https://docs.google.com/spreadsheets/d/14UFLPzges2EpxaeuGO0cwFRrSyg1JYIwYmDonkPqMO0/edit#gid=2071425012"
-               }
             ],
             prepods:[
                {
-                  name:"Набебин Алексей Александрович",
-                  email:"anabebin@yandex.ru",
+                  name:"Загрузка",
+                  email:"Загрузка",
                   other:null
                },
-               {
-                  name:"Будылина Евгения Александровна",
-                  email:"bud-ea@yandex.ru",
-                  other:null
-               }
             ]
          }
-    ]
+    
 };
 const subjectReducer = (state = initialState, action) => {
     
     switch (action.type) {
+        case SET_SUBJECT:{
+            return{
+               subject: action.subject
+            }
+        }
         default: return state;
     };
 };
-
+const setSubject = (subject) => ({type:SET_SUBJECT, subject});
+export const  setSubjectThunk = (id) =>{
+    return(dispatch) =>{
+        SubjectsAPI.getSubject(id)
+        .then(response =>{
+         
+               dispatch(setSubject(response.data));  
+        });       
+    };
+};
 export default subjectReducer;
