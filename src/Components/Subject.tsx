@@ -27,7 +27,7 @@ const Subject:React.FC =(props)=>{
         //Индийские программисты
         if(subjectInfo.title === null) {subjectInfo.title=undefined; return (<Redirect to={"/"}/>);};
         if(subjectInfo.title === undefined) return (null);
-        //if(loading) return(<div className="list-group" ><div className="list-group-item list-group-item-action"><h2>Такого предмета нет</h2></div><h4><p><a href=".." className="list-group-item list-group-item-action ">В меню</a></p></h4></div> )
+        
             subjectLinks = subjectInfo.links?.map(l=>{return(<a className='list-group-item list-group-item-action' href={l.url}>{l.name}</a>)});
             subjectPrepods = subjectInfo.prepods?.map(prepod=>{return(
                 <div className="list-group-item list-group-item-action">
@@ -39,7 +39,7 @@ const Subject:React.FC =(props)=>{
         return ( 
                     <div className="list-group" >
                         <div className="list-group-item list-group-item-action">
-                            <h2>{subjectInfo?.title?subjectInfo.title:"Предмет без названия"}</h2>
+                            <h2>{subjectInfo.title}</h2>
                         </div>
                         <div>
                             {subjectLinks}
