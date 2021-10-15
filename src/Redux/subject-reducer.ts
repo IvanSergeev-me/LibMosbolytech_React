@@ -5,22 +5,23 @@ import { ActionTypes, SubjectActionList, subjectState } from "../Types/types";
 export let initialState:subjectState = {
     subject:
         {
-            title:"Загрузка",
+            title:undefined,
             links:[
                {
-                  name:"Загрузка",
-                  url:"Загрузка"
+                  name:"",
+                  url:""
                },
             ],
             prepods:[
                {
-                  name:"Загрузка",
-                  email:"Загрузка",
+                  name:"",
+                  email:"",
                   other:null
                },
             ]
          },
-    loading:false
+    loading:false,
+   
  };
 const subjectReducer = (state:subjectState = initialState , action: SubjectActionList) => {
     

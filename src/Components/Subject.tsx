@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { withRouter } from "react-router";
+import { Redirect, withRouter } from "react-router";
 import { useParams } from "react-router-dom";
 import { appTypedSelector } from "../Hooks/appTypedSelector";
 import { useActions } from "../Hooks/useActions";
@@ -23,9 +23,13 @@ const Subject:React.FC =(props)=>{
             var id_number: number = +id;
             setSubject(id_number)
         },[]);
-        if(loading) return(<div className="list-group" ><div className="list-group-item list-group-item-action"><h2>Такого предмета нет</h2></div><h4><p><a href=".." className="list-group-item list-group-item-action ">В меню</a></p></h4></div> )
-            subjectLinks = subjectInfo.links.map(l=>{return(<a className='list-group-item list-group-item-action' href={l.url}>{l.name}</a>)});
-            subjectPrepods = subjectInfo.prepods.map(prepod=>{return(
+
+        //Индийские программисты
+        if(subjectInfo.title === null) {subjectInfo.title=undefined; return (<Redirect to={"/"}/>);};
+        if(subjectInfo.title === undefined) return (null);
+        //if(loading) return(<div className="list-group" ><div className="list-group-item list-group-item-action"><h2>Такого предмета нет</h2></div><h4><p><a href=".." className="list-group-item list-group-item-action ">В меню</a></p></h4></div> )
+            subjectLinks = subjectInfo.links?.map(l=>{return(<a className='list-group-item list-group-item-action' href={l.url}>{l.name}</a>)});
+            subjectPrepods = subjectInfo.prepods?.map(prepod=>{return(
                 <div className="list-group-item list-group-item-action">
                     <p>{prepod.name}</p>
                     {prepod.email?<p><b>email: </b>{prepod.email}</p>:null}
@@ -35,7 +39,7 @@ const Subject:React.FC =(props)=>{
         return ( 
                     <div className="list-group" >
                         <div className="list-group-item list-group-item-action">
-                            <h2>{subjectInfo?.title}</h2>
+                            <h2>{subjectInfo?.title?subjectInfo.title:"Предмет без названия"}</h2>
                         </div>
                         <div>
                             {subjectLinks}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
 import Subjects from './Components/Subjects'
 import { Route, RouteComponentProps } from 'react-router-dom';
 import Subject from './Components/Subject';

@@ -22,9 +22,9 @@ export interface subjectState{
     loading: boolean
 }
 export type subjectInfo ={
-    title: string,
-    links:any[],
-    prepods:any[]
+    title: string|null|undefined,
+    links:any[]|null,
+    prepods:any[]|null,
 }
 //Action Creator - структура. Принимает обязательно тип.
 export interface SetSubjectsAction{
