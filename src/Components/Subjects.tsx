@@ -13,15 +13,12 @@ const Subjects:React.FC= ()=>{
   
     useEffect(()=>{
        fetchSubjects()
-    },[]);
-    if(loading){
-            return <div>Загрузка...</div>
-    }
+    }, []);
+    if (!subjects.length) return (null);
     return(
-        
         <div>
              {subjects.map(s=><NavLink className="botr" key={s.id} to={`/subject/${s.id} `}>{s.name}</NavLink>)}
-            <a  className="botr" href="https://rasp.dmami.ru/">Расписание 191-361</a>
+            <a className="botr" href="https://rasp.dmami.ru/?191-361">Расписание 191-361</a>
         </div>
     )
 }
