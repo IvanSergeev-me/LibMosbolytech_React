@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Redirect, withRouter } from "react-router";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { appTypedSelector } from "../Hooks/appTypedSelector";
 import { useActions } from "../Hooks/useActions";
 
@@ -49,7 +49,7 @@ const Subject:React.FC =(props)=>{
                             {subjectPrepods}
                         </div>
                         
-                        <h4><p><a href=".." className="list-group-item list-group-item-action">В меню</a></p></h4>
+                        <h4><p><NavLink to="/" className="list-group-item list-group-item-action" activeClassName="list-group-item list-group-item-action">В меню</NavLink></p></h4>
                 </div>
                 )
         

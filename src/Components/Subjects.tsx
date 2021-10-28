@@ -12,7 +12,8 @@ const Subjects:React.FC= ()=>{
     const {fetchSubjects} = useActions();
   
     useEffect(()=>{
-       fetchSubjects()
+        if(subjects.length === 0) fetchSubjects();
+       
     }, []);
     if (!subjects.length) return (null);
     return(
