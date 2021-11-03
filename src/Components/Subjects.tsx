@@ -16,7 +16,7 @@ const Subjects:React.FC= ()=>{
     return(
         <div>
              {subjects.map(s=><NavLink className="botr" key={s.id} to={`/subject/${s.id} `}>{s.name}</NavLink>)}
-            <a className="botr" href="https://rasp.dmami.ru/?191-361">Расписание 191-361!!!</a>
+            <a className="botr" href="https://rasp.dmami.ru/?191-361">Расписание 191-361</a>
         </div>
     )
 }
