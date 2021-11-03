@@ -15,14 +15,14 @@ const Subject:React.FC =(props)=>{
           };   
         const { id } = useParams<QuizParams>();
        
-        const {subject, loading}= appTypedSelector(state => state.subjectReducer);
+        const {subject}= appTypedSelector(state => state.subjectReducer);
         let subjectInfo = subject;
         let subjectLinks = null;
         let subjectPrepods = null;
         useEffect(()=>{
             var id_number: number = +id;
             setSubject(id_number)
-        },[]);
+        },[id]);
 
         //Индийские программисты
         if(subjectInfo.title === null) {subjectInfo.title=undefined; return (<Redirect to={"/"}/>);};

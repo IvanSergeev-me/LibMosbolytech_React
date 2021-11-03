@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { subjectInArray, subjectsState, SubjectsToGet } from '../Types/types';
+import {SubjectsToGet } from '../Types/types';
 
 const instance = axios.create({
     baseURL:"https://lib.mospolytech.com/api/"
