@@ -4,7 +4,8 @@
 export enum ActionTypes{
     SET_SUBJECTS = "SET_SUBJECTS",
     FETCH_LOADING = "FETCH_LOADING",
-    SET_SUBJECT = "SET_SUBJECT"
+    SET_SUBJECT = "SET_SUBJECT",
+    CLEAR_STATE = "CLEAR_STATE"
 }
 
 //Тип данных для описание того, что будет в массиве subjects стейта
@@ -42,9 +43,12 @@ export interface SetSubjectAction{
     type:ActionTypes.SET_SUBJECT,
     subject: subjectInfo
 }
+export interface ClearStateAction{
+    type:ActionTypes.CLEAR_STATE,
+}
 //Описание того, что нужно получить из запроса к апи в файле Api.ts для аксиоса
 export type SubjectsToGet = {subjects:subjectInArray[]}
 
 //Тип, который дается объекту action, в котором описаны возможные Action-Creatorы
 export type AppActionList = SetSubjectsAction | FetchLoadingAction;
-export type SubjectActionList = SetSubjectAction | FetchLoadingAction;
+export type SubjectActionList = SetSubjectAction | FetchLoadingAction | ClearStateAction;

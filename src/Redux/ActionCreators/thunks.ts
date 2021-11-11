@@ -6,7 +6,7 @@ import { ActionTypes, AppActionList, SubjectActionList } from "../../Types/types
 
 //Получает все предметы
 export const fetchSubjects = () =>{
-    return (dispatch: Dispatch<AppActionList>) =>{
+    return (dispatch: Dispatch<AppActionList>) =>{       
         SubjectsAPI.getSubjects()
         .then(response =>{
             try{

@@ -35,6 +35,9 @@ const subjectReducer = (state:subjectState = initialState , action: SubjectActio
         case ActionTypes.FETCH_LOADING:{
             return { ...state, loading:state.loading?false:true } 
         }
+        case ActionTypes.CLEAR_STATE:{
+            return {...initialState}
+        }
         default: return state;
     };
 };
